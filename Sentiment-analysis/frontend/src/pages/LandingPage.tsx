@@ -36,7 +36,7 @@ function LandingPageContent() {
 
   const benefits = [
     "AI-powered sentiment analysis",
-    "Interactive data visualizations", 
+    "Interactive data visualizations",
     "Bulk comment processing",
     "Exportable reports (PDF/CSV)",
     "Real-time dashboard insights",
@@ -57,7 +57,7 @@ function LandingPageContent() {
               <p className="text-xs text-muted-foreground">Comment Analyzer</p>
             </div>
           </div>
-          
+
           <nav className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               Features
@@ -81,8 +81,8 @@ function LandingPageContent() {
               <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
             </Button>
-            <Button 
-              onClick={() => navigate('/dashboard')}
+            <Button
+              onClick={() => navigate('/upload')}
               className="hero-gradient text-white font-medium"
             >
               Get Started
@@ -104,29 +104,29 @@ function LandingPageContent() {
               <Badge variant="secondary" className="mb-6 text-sm px-4 py-2">
                 AI-Powered Comment Analysis Platform
               </Badge>
-              
+
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Transform Stakeholder 
+                Transform Stakeholder
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"> Feedback </span>
                 Into Actionable Insights
               </h1>
-              
+
               <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-                Analyze thousands of consultation comments with advanced AI sentiment analysis, 
+                Analyze thousands of consultation comments with advanced AI sentiment analysis,
                 automated categorization, and beautiful visualizations. Make data-driven decisions faster.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                <Button 
-                  size="lg" 
-                  onClick={() => navigate('/dashboard')}
+                <Button
+                  size="lg"
+                  onClick={() => navigate('/upload')}
                   className="hero-gradient text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
                 >
                   Start Analyzing
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="lg"
                   className="px-8 py-3 text-lg border-2 hover:bg-accent/10"
                 >
@@ -192,7 +192,7 @@ function LandingPageContent() {
                 Why Choose Our Platform?
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Built specifically for government consultations and stakeholder engagement, 
+                Built specifically for government consultations and stakeholder engagement,
                 our platform delivers enterprise-grade analysis with user-friendly interfaces.
               </p>
 
@@ -229,7 +229,7 @@ function LandingPageContent() {
                     <h3 className="text-2xl font-bold text-foreground mb-2">Ready to Get Started?</h3>
                     <p className="text-muted-foreground">Join organizations already using our platform</p>
                   </div>
-                  
+
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
                       <div className="text-2xl font-bold text-primary">10K+</div>
@@ -244,8 +244,8 @@ function LandingPageContent() {
                       <div className="text-sm text-muted-foreground">Accuracy Rate</div>
                     </div>
                   </div>
-                  
-                  <Button 
+
+                  <Button
                     onClick={() => navigate('/dashboard')}
                     className="w-full hero-gradient text-white font-semibold py-3"
                   >

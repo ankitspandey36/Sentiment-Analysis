@@ -28,6 +28,12 @@ import { motion } from "framer-motion";
 
 const menuItems = [
   {
+    title: "Upload",
+    url: "/upload",
+    icon: Upload,
+    description: "Upload Data"
+  },
+  {
     title: "Dashboard",
     url: "/dashboard",
     icon: BarChart3,
@@ -39,12 +45,7 @@ const menuItems = [
     icon: MessageSquare,
     description: "Manage Comments"
   },
-  {
-    title: "Upload",
-    url: "/upload",
-    icon: Upload,
-    description: "Upload Data"
-  },
+  ,
   {
     title: "Visualizations",
     url: "/visualizations",
