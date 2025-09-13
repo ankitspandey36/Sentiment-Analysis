@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* eConsultation Comment Analyzer Design System */
+
+@layer base {
+  :root {
+    --background: 250 100% 99%;
+    --foreground: 224 15% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 15% 15%;
+
+    --primary: 210 100% 48%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 224 15% 25%;
+
+    --muted: 215 28% 96%;
+    --muted-foreground: 215 15% 46%;
+
+    --accent: 194 75% 95%;
+    --accent-foreground: 194 75% 25%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 210 100% 48%;
+
+    /* Analytics-specific colors */
+    --positive: 142 71% 45%;
+    --positive-foreground: 0 0% 98%;
+    --negative: 0 84% 60%;
+    --negative-foreground: 0 0% 98%;
+    --neutral: 43 96% 56%;
+    --neutral-foreground: 224 15% 15%;
+    --mixed: 262 83% 58%;
+    --mixed-foreground: 0 0% 98%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 48%), hsl(194 95% 68%));
+    --gradient-analytics: linear-gradient(135deg, hsl(210 100% 48%) 0%, hsl(194 95% 68%) 50%, hsl(172 76% 77%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(215 28% 98%) 100%);
+    --gradient-positive: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 55%));
+    --gradient-negative: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 84% 70%));
+    --gradient-neutral: linear-gradient(135deg, hsl(43 96% 56%), hsl(43 96% 66%));
+
+    /* Shadows */
+    --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-elevated: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
+    --shadow-analytics: 0 20px 25px -5px hsl(210 100% 48% / 0.1), 0 8px 10px -6px hsl(210 100% 48% / 0.1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 224 15% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 224 15% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 224 15% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 194 95% 68%;
+    --primary-foreground: 224 15% 6%;
+
+    --secondary: 224 15% 12%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 224 15% 10%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 194 75% 15%;
+    --accent-foreground: 194 75% 90%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 224 15% 15%;
+    --input: 224 15% 15%;
+    --ring: 194 95% 68%;
+
+    /* Dark mode analytics colors */
+    --positive: 142 71% 55%;
+    --negative: 0 84% 65%;
+    --neutral: 43 96% 65%;
+    --mixed: 262 83% 68%;
+
+    /* Dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(194 95% 68%), hsl(210 100% 75%));
+    --gradient-analytics: linear-gradient(135deg, hsl(194 95% 68%) 0%, hsl(210 100% 75%) 50%, hsl(172 76% 85%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(224 15% 8%) 0%, hsl(224 15% 12%) 100%);
+
+    --sidebar-background: 224 15% 4%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 194 95% 68%;
+    --sidebar-primary-foreground: 224 15% 6%;
+    --sidebar-accent: 224 15% 10%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 224 15% 12%;
+    --sidebar-ring: 194 95% 68%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .analytics-card {
+    @apply bg-card border border-border rounded-lg p-6 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition-all duration-300;
+    background: var(--gradient-card);
+  }
+  
+  .sentiment-positive {
+    @apply bg-positive text-positive-foreground;
+    background: var(--gradient-positive);
+  }
+  
+  .sentiment-negative {
+    @apply bg-negative text-negative-foreground;
+    background: var(--gradient-negative);
+  }
+  
+  .sentiment-neutral {
+    @apply bg-neutral text-neutral-foreground;
+    background: var(--gradient-neutral);
+  }
+  
+  .sentiment-mixed {
+    @apply bg-mixed text-mixed-foreground;
+  }
+  
+  .hero-gradient {
+    background: var(--gradient-analytics);
+  }
+  
+  .analytics-shadow {
+    box-shadow: var(--shadow-analytics);
+  }
+}
