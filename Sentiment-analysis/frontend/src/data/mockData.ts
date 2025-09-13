@@ -29,102 +29,113 @@ export interface AnalyticsData {
   };
 }
 
+// --- Example Comments from Ministry of Corporate Affairs eConsultation ---
 export const mockComments: Comment[] = [
   {
     id: "1",
-    stakeholderType: "Public Citizen",
-    clause: "Section 3.2 - Environmental Protection",
-    commentText: "I strongly support the new environmental protection measures proposed in this policy. The regulations will help preserve our natural resources for future generations and ensure sustainable development practices.",
+    stakeholderType: "Chartered Accountant",
+    clause: "Clause 5.1 – Corporate Governance Disclosures",
+    commentText:
+      "The enhanced disclosure requirements on related-party transactions are a welcome move. This will improve transparency and investor confidence.",
     sentiment: "positive",
-    sentimentScore: 0.85,
-    confidence: 0.92,
-    summary: "Strong support for environmental protection measures and sustainable development focus.",
-    keywords: ["environmental protection", "sustainable development", "natural resources", "regulations"],
-    analyzedAt: "2024-01-15T10:30:00Z",
+    sentimentScore: 0.82,
+    confidence: 0.91,
+    summary:
+      "Supports enhanced related-party disclosure rules for greater transparency and investor confidence.",
+    keywords: ["related-party transactions", "transparency", "investor confidence", "corporate governance"],
+    analyzedAt: "2024-01-20T10:15:00Z",
     flagged: false
   },
   {
     id: "2",
     stakeholderType: "Industry Association",
-    clause: "Section 4.1 - Compliance Requirements",
-    commentText: "The proposed compliance timeline is unrealistic for small businesses. We need at least 18 months instead of 12 to properly implement these changes without significant financial burden.",
+    clause: "Clause 7.3 – Compliance Timeline",
+    commentText:
+      "The proposed compliance window of 6 months is impractical for medium-sized companies. We request at least 12 months to adapt internal systems.",
     sentiment: "negative",
-    sentimentScore: -0.65,
-    confidence: 0.88,
-    summary: "Concerns about unrealistic compliance timeline for small businesses, requests extension to 18 months.",
-    keywords: ["compliance timeline", "small businesses", "financial burden", "implementation"],
-    analyzedAt: "2024-01-15T11:45:00Z",
+    sentimentScore: -0.63,
+    confidence: 0.87,
+    summary:
+      "Finds 6-month compliance window impractical; requests extension to 12 months for medium-sized companies.",
+    keywords: ["compliance window", "medium-sized companies", "internal systems", "timeline extension"],
+    analyzedAt: "2024-01-20T11:40:00Z",
     flagged: true
   },
   {
     id: "3",
-    stakeholderType: "Environmental NGO",
-    clause: "Section 2.3 - Emission Standards",
-    commentText: "While we appreciate the effort to address emissions, the proposed standards may not be stringent enough to meet our climate commitments. We recommend adopting stricter targets aligned with international best practices.",
+    stakeholderType: "Corporate Law Firm",
+    clause: "Clause 3.4 – Audit Committee Powers",
+    commentText:
+      "While granting broader powers to audit committees is positive, clarity is needed on how these powers interact with board oversight responsibilities.",
     sentiment: "mixed",
-    sentimentScore: 0.15,
-    confidence: 0.76,
-    summary: "Appreciates emission efforts but suggests stricter standards aligned with international practices.",
-    keywords: ["emission standards", "climate commitments", "international practices", "stricter targets"],
-    analyzedAt: "2024-01-15T14:20:00Z",
+    sentimentScore: 0.18,
+    confidence: 0.79,
+    summary:
+      "Welcomes broader audit committee powers but seeks clarity on overlap with board oversight.",
+    keywords: ["audit committee", "board oversight", "corporate governance", "clarity"],
+    analyzedAt: "2024-01-20T13:05:00Z",
     flagged: false
   },
   {
     id: "4",
     stakeholderType: "Academic Institution",
-    clause: "Section 1.4 - Research Provisions",
-    commentText: "The research funding allocation is adequate and will support important studies on policy effectiveness. However, consideration should be given to including interdisciplinary approaches.",
+    clause: "Clause 2.2 – Corporate Social Responsibility Reporting",
+    commentText:
+      "The reporting format for CSR expenditure appears adequate and may encourage better measurement of social impact. Inclusion of sector-wise metrics could be beneficial.",
     sentiment: "neutral",
-    sentimentScore: 0.25,
-    confidence: 0.81,
-    summary: "Adequate research funding noted, suggests including interdisciplinary approaches.",
-    keywords: ["research funding", "policy effectiveness", "interdisciplinary approaches", "studies"],
-    analyzedAt: "2024-01-15T16:10:00Z",
+    sentimentScore: 0.24,
+    confidence: 0.83,
+    summary:
+      "CSR reporting format adequate; suggests adding sector-wise impact metrics.",
+    keywords: ["CSR expenditure", "social impact", "sector-wise metrics", "reporting format"],
+    analyzedAt: "2024-01-20T14:20:00Z",
     flagged: false
   },
   {
     id: "5",
-    stakeholderType: "Municipal Government",
-    clause: "Section 5.2 - Local Implementation",
-    commentText: "Local governments will face significant challenges implementing these policies without adequate provincial support and funding. We strongly urge the government to provide comprehensive implementation assistance.",
+    stakeholderType: "Public Company",
+    clause: "Clause 9.1 – Penalties for Non-Compliance",
+    commentText:
+      "The proposed penalties for delayed filings are excessive and could adversely impact cash-strapped companies. A graded penalty system should be considered.",
     sentiment: "negative",
-    sentimentScore: -0.72,
-    confidence: 0.85,
-    summary: "Local implementation concerns, requests comprehensive provincial support and funding assistance.",
-    keywords: ["local implementation", "provincial support", "funding assistance", "implementation challenges"],
-    analyzedAt: "2024-01-15T09:15:00Z",
+    sentimentScore: -0.71,
+    confidence: 0.86,
+    summary:
+      "Objects to excessive penalties for delayed filings; recommends graded penalty system.",
+    keywords: ["penalties", "delayed filings", "graded system", "cash-strapped companies"],
+    analyzedAt: "2024-01-20T09:05:00Z",
     flagged: true
   }
 ];
 
 export const mockAnalytics: AnalyticsData = {
-  totalComments: 247,
+  totalComments: 312,
   sentimentDistribution: {
-    positive: 89,
-    negative: 76,
-    neutral: 52,
-    mixed: 30
+    positive: 112,
+    negative: 95,
+    neutral: 58,
+    mixed: 47
   },
   topKeywords: [
-    { word: "environmental protection", count: 45, sentiment: "positive" },
-    { word: "compliance costs", count: 38, sentiment: "negative" },
-    { word: "implementation timeline", count: 32, sentiment: "mixed" },
-    { word: "sustainable development", count: 28, sentiment: "positive" },
-    { word: "funding support", count: 25, sentiment: "neutral" },
-    { word: "regulatory burden", count: 23, sentiment: "negative" },
-    { word: "climate commitments", count: 21, sentiment: "positive" },
-    { word: "small businesses", count: 19, sentiment: "negative" }
+    { word: "corporate", count: 54, sentiment: "positive" },
+    { word: "compliance timeline", count: 42, sentiment: "negative" },
+    { word: "penalties", count: 37, sentiment: "negative" },
+    { word: "CSR reporting", count: 33, sentiment: "neutral" },
+    { word: "audit committee", count: 28, sentiment: "mixed" },
+    { word: "related-party transactions", count: 25, sentiment: "positive" },
+    { word: "investor confidence", count: 22, sentiment: "positive" },
+    { word: "medium-sized companies", count: 19, sentiment: "negative" }
   ],
   stakeholderBreakdown: [
-    { type: "Public Citizens", count: 95, avgSentiment: 0.35 },
-    { type: "Industry Associations", count: 68, avgSentiment: -0.42 },
-    { type: "Environmental NGOs", count: 42, avgSentiment: 0.18 },
-    { type: "Academic Institutions", count: 28, avgSentiment: 0.12 },
-    { type: "Municipal Governments", count: 14, avgSentiment: -0.28 }
+    { type: "Chartered Accountants", count: 96, avgSentiment: 0.38 },
+    { type: "Industry Associations", count: 78, avgSentiment: -0.41 },
+    { type: "Corporate Law Firms", count: 44, avgSentiment: 0.15 },
+    { type: "Academic Institutions", count: 34, avgSentiment: 0.11 },
+    { type: "Public Companies", count: 20, avgSentiment: -0.32 }
   ],
   confidenceStats: {
-    highConfidence: 186,
-    mediumConfidence: 43,
-    lowConfidence: 18
+    highConfidence: 240,
+    mediumConfidence: 52,
+    lowConfidence: 20
   }
 };
