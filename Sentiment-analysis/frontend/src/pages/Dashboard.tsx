@@ -60,12 +60,14 @@ export default function Dashboard() {
           title="High Confidence"
           value={confidenceStats.highConfidence}
           icon={CheckCircle}
+          change={{ value: 4.8, type: "increase" }}
           description="Predictions above 85% confidence"
         /></div>
         <div className="h-60"><AnalyticsCard
           title="Flagged for Review"
           value={flaggedCount}
           icon={AlertTriangle}
+          change={{ value: 6.7, type: "increase" }}
           description="Low confidence predictions"
         /></div>
       </div>
