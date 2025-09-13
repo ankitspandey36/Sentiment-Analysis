@@ -1,0 +1,129 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: econsultation_db
+    environment:
+      POSTGRES_DB: econsultation
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - econsultation_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: econsultation_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - econsultation_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  # FastAPI Backend
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: econsultation_api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/econsultation
+      REDIS_URL: redis://redis:6379
+      SECRET_KEY: your-secret-key-change-in-production
+      ENVIRONMENT: development
+      CORS_ORIGINS: http://localhost:3000,http://localhost:5173
+    volumes:
+      - ./app:/app/app
+      - ./uploads:/app/uploads
+    networks:
+      - econsultation_network
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Nginx Reverse Proxy (Optional)
+  nginx:
+    image: nginx:alpine
+    container_name: econsultation_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - econsultation_network
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  # Celery Worker (for background tasks)
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: econsultation_worker
+    command: celery -A app.core.celery worker --loglevel=info
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/econsultation
+      REDIS_URL: redis://redis:6379
+      SECRET_KEY: your-secret-key-change-in-production
+      ENVIRONMENT: development
+    volumes:
+      - ./app:/app/app
+      - ./uploads:/app/uploads
+    networks:
+      - econsultation_network
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+
+  # Celery Flower (task monitoring)
+  flower:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: econsultation_flower
+    command: celery -A app.core.celery flower
+    ports:
+      - "5555:5555"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/econsultation
+      REDIS_URL: redis://redis:6379
+      SECRET_KEY: your-secret-key-change-in-production
+      ENVIRONMENT: development
+    networks:
+      - econsultation_network
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  econsultation_network:
+    driver: bridge
